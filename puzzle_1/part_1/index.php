@@ -1,7 +1,6 @@
 <?php
 
-$puzzleInput = 'puzzle_input.txt';
-$file = fopen($puzzleInput, 'r');
+$puzzleInput = '../resource/puzzle_input.txt';
 $resultSum = 0;
 
 function getCalibrationValue(string $inputString): int
@@ -17,7 +16,7 @@ function getCalibrationValue(string $inputString): int
         : 0;
 }
 
-if ($file) {
+if ($file = fopen($puzzleInput, 'r')) {
     while (($line = fgets($file)) !== false) {
         $resultSum += getCalibrationValue($line);
     }

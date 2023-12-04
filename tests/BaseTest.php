@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-namespace test;
+namespace tests;
 
 class BaseTest
 {
     protected string $class;
     public int $expect;
-    public string $resource = '../resource/inputTest.txt';
+    public string $resource;
 
-    public function testRun(): void
+    public function run(): void
     {
-        $objectReflection = new ReflectionClass($this->class);
-        $object = $objectReflection->newInstanceArgs($this->resource);
+        $objectReflection = new \ReflectionClass($this->class);
+        /** @var \src\GameInterface $object */
+        $object = $objectReflection->newInstanceArgs([$this->resource]);
         $object->run();
 
         if ($object->getResult() === $this->expect) {

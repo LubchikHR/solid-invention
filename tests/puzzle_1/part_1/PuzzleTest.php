@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace src\puzzle_1\part_1;
+namespace tests\puzzle_1\part_1;
 
-use test\BaseTest;
+use src\puzzle_1\part_1\Puzzle;
+use tests\BaseTest;
 
 class PuzzleTest extends BaseTest
 {
-    public int $expect = 142;
+    public int $expect = 385;
     public string $class = Puzzle::class;
+    public string $resource = __DIR__.'/../resource/inputTest.txt';
 }

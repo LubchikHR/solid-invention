@@ -13,10 +13,10 @@ class Puzzle extends BaseGame
     public function run(): void
     {
         $this->loadFileIntoMatrix();
-        $this->calculateNumber();
+        $this->calculateNumbers();
     }
 
-    private function calculateNumber(): void
+    private function calculateNumbers(): void
     {
         foreach ($this->matrix as $verticalIndex => $row) {
             $concatenatedNumber = '';
@@ -53,7 +53,7 @@ class Puzzle extends BaseGame
         $horizonStart = ($latest)
             ? $horizonIndex - $numberLength
             : $horizonIndex - $numberLength - 1;
-        $horizonStart = $horizonStart < 0 ? 0 : $horizonStart;
+        $horizonStart = max(0, $horizonStart);
 
         if ($this->isSpecialChar($this->matrix[$verticalIndex][$horizonStart])) {
             return true;
